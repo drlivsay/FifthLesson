@@ -1,3 +1,4 @@
+//Как заставить терминал выводить не наименование кейса, а String, привязанный к нему (т.е. не "off", а "выключен")?
 enum Eng: String {
     case on =  "заведен"
     case off = "заглушен"
@@ -24,7 +25,6 @@ enum Trailer: String{
     case unattached = "отсутствует"
 }
 
-// конец списка методов 
 protocol Car {
     var brand: String {get set}
     var year: Int {get set}
@@ -47,7 +47,6 @@ extension Wind {
     self = .open }}
 }
 
-// конец протокола и расширения к ним
 class trunkCar: Car {
     var brand: String
     var year: Int
@@ -56,7 +55,7 @@ class trunkCar: Car {
     var windows: Wind 
     var roof: Roof
 
-    init (trunk: Trunk, engine: Eng, windows: Wind, brand: String, year: Int, roof: Roof) {
+    init (brand: String,  year: Int, trunk: Trunk, engine: Eng, windows: Wind, roof: Roof) {
         self.trunk = trunk
         self.engine = engine
         self.windows = windows
@@ -105,8 +104,14 @@ extension Trailer {
     case .unattached:
     self = .attached}}
 }
+extension trunkCar {
+     func infosport(){
+         print("\(self.brand) \(self.year) года выпуска.")
+         print("двигатель\(self.engine)")
+        print("окна\(self.windows)")
+    }
+}
 
-
-
-
+var Lada = trunkCar (brand: "Лада", year: 2001, trunk: .partly (kg: 3.2), engine: .off, windows: .closed, roof: .here)
+Lada.infosport()
 
