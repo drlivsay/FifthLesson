@@ -1,34 +1,112 @@
-enum Engine: String {
-    case on =  "Заведен"
-    case off = "Заглушен"
-    mutating func button() {switch self {
-        case .off:
-        self = .on
-        case .on:
-        self = .off }
-
-    }
+enum Eng: String {
+    case on =  "заведен"
+    case off = "заглушен"
 }
 enum Wind: String {
-    case open =  "Открыто"
-    case closed = "Закрыто"
-      mutating func richag() {
-        switch self {
-        case .open:
-        self = .closed
-        case .closed:
-        self = .open }
-}
+    case open =  "открыто"
+    case closed = "закрыто"
 }
 enum Trunk {
     case pust(empty: String)
     case polon(full: String)
     case partly(kg: Float)
 }
-protocol Vehicle {
-var brand: String {get}
-var year: Int {get}
-var trunk: Trunk {get set}
-var engine: Engine{get set}
-var windows: Wind {get set}
+enum Roof: String{
+    case here =  "на месте"
+    case removed = "снята"
 }
+enum Heat: String{
+    case warm =  "прогрет"
+    case cold = "нуждается в прогреве"
+}
+enum Trailer: String{
+    case attached =  "прикреплен"
+    case unattached = "отсутствует"
+}
+
+// конец списка методов 
+protocol Car {
+    var brand: String {get set}
+    var year: Int {get set}
+    var trunk: Trunk {get set}
+    var engine: Eng{get set}
+    var windows: Wind {get set}
+}
+extension Eng {
+    mutating func button() {switch self {
+    case .off:
+    self = .on
+    case .on:
+    self = .off }}
+}
+extension Wind {
+    mutating func richag() {switch self {
+    case .open:
+    self = .closed
+    case .closed:
+    self = .open }}
+}
+
+// конец протокола и расширения к ним
+class trunkCar: Car {
+    var brand: String
+    var year: Int
+    var trunk: Trunk
+    var engine: Eng
+    var windows: Wind 
+    var roof: Roof
+
+    init (trunk: Trunk, engine: Eng, windows: Wind, brand: String, year: Int, roof: Roof) {
+        self.trunk = trunk
+        self.engine = engine
+        self.windows = windows
+        self.brand = brand
+        self.year = year
+        self.roof = roof
+    }
+}
+extension Roof {
+    mutating func roofer() {switch self {
+    case .here:
+    self = .removed
+    case .removed:
+    self = .here}}
+}
+class sportCar: Car {
+    var brand: String
+    var year: Int
+    var trunk: Trunk
+    var engine: Eng
+    var windows: Wind 
+    var heat: Heat
+    var trailer: Trailer
+
+    init (trunk: Trunk, engine: Eng, windows: Wind, brand: String, year: Int, roof: Roof ,heat: Heat ,trailer: Trailer) {
+        self.trunk = trunk
+        self.engine = engine
+        self.windows = windows
+        self.brand = brand
+        self.year = year
+        self.trailer = trailer
+        self.heat = heat
+    }
+}
+extension Heat {
+    mutating func heater() {switch self {
+    case .warm:
+    self = .cold
+    case .cold:
+    self = .warm}}
+}
+extension Trailer {
+    mutating func attach() {switch self {
+    case .attached:
+    self = .unattached
+    case .unattached:
+    self = .attached}}
+}
+
+
+
+
+
