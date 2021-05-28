@@ -1,0 +1,6 @@
+
+func queue<T> (a:[T]){
+    for element in a {
+        print(element)
+    }
+}
