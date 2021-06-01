@@ -1,6 +1,32 @@
-
-func queue<T> (a:[T]){
-    for element in a {
-        print(element)
+class Line {
+    var came: Int
+    var wait: Int
+    var kassa: Int 
+    func more() -> Int {
+        return wait + came
+    }
+    func remove() -> Int {
+        return wait - kassa
+    }
+    init(came: Int, wait: Int, kassa: Int) {
+        self.came = came
+        self.wait = wait
+        self.kassa = kassa
+}
+}
+struct Queue <T> {                                
+    private var elements: [T] = []       
+    mutating func otkr (_ element: T) {
+        elements.append(element)
+    }
+    mutating func zakr() -> T? {
+        return elements.removeLast()
     }
 }
+var ochered = Queue <Line> ()          
+
+
+Queue.otkr (Line(wait: 10, came: 30, cassa: 3))
+ // разобраться, почему он не считает кассу приемлимой
+
+
