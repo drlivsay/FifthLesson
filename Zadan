@@ -1,0 +1,38 @@
+
+
+ class Line {
+    var came: Int
+    var wait: Int
+    var kassa: Int 
+    func more() -> Int {
+        return wait + came
+    }
+    func remove() -> Int {
+        return wait - kassa
+    }
+    init(came: Int, wait: Int, kassa: Int) {
+        self.came = came
+        self.wait = wait
+        self.kassa = kassa
+}
+}
+struct Queue <T> {                                
+    private var elements: [T] = []       
+    mutating func otkr (_ element: T) {
+        elements.append(element)
+    }
+    mutating func zakr() -> T? {
+        return elements.removeLast()
+    }
+}
+var ochered = Queue <Line> ()          
+
+
+ochered.otkr (Line(came: 1, wait: 15,  kassa: 1))
+ochered.otkr (Line(came: 30, wait: 10,  kassa: 3))
+ochered.otkr (Line(came: 20, wait: 6,  kassa: 3))
+ochered.otkr (Line(came: 11, wait: 5,  kassa: 2))
+ochered.otkr (Line(came: 37, wait: 30,  kassa: 5))
+ochered.otkr (Line(came: 8, wait: 7,  kassa: 3))
+ochered.otkr (Line(came: 21, wait: 0,  kassa: 1))
+ochered.otkr (Line(came: 0, wait: 20,  kassa: 2))
