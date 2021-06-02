@@ -1,4 +1,6 @@
-class Line {
+
+
+ class Line {
     var came: Int
     var wait: Int
     var kassa: Int 
@@ -26,7 +28,11 @@ struct Queue <T> {
 var ochered = Queue <Line> ()          
 
 
-Queue.otkr (Line(wait: 10, came: 30, cassa: 3))
- // разобраться, почему он не считает кассу приемлимой
-
-
+ochered.otkr (Line(came: 1, wait: 15,  kassa: 1))
+ochered.otkr (Line(came: 30, wait: 10,  kassa: 3))
+ochered.otkr (Line(came: 20, wait: 6,  kassa: 3))
+ochered.otkr (Line(came: 11, wait: 5,  kassa: 2))
+ochered.otkr (Line(came: 37, wait: 30,  kassa: 5))
+ochered.otkr (Line(came: 8, wait: 7,  kassa: 3))
+ochered.otkr (Line(came: 21, wait: 0,  kassa: 1))
+ochered.otkr (Line(came: 0, wait: 20,  kassa: 2))
